@@ -8,7 +8,9 @@ $(document).ready(function () {
                 required: true,
                 email: true
             },
-            gender: "required",
+        gender: { // <- NAME of every radio in the same group
+            required: true
+        }
         },
         // Specify the validation error messages
         messages: {
@@ -17,14 +19,14 @@ $(document).ready(function () {
             gender: "please specify your gender other option is applicable",
         },
         submitHandler: function (form) {
-            console.log(form)
+//            console.log(form)
 //            $("#submit_button").click(function () {
                 $("tbody").append("<tr>" +
                         "<td>" + $("#name").val() + "</td>" +
                         "<td>" + $("#email").val() + "</td>" +
-                        "<td>" + $("#gender").val() + "</td>" +
+                        "<td>" + $("input[name='gender']:checked").val() + "</td>" +
                         "<td><button class='btn btn-info btn-sm' data-toggle='modal' id='edit' data-target='#myModal'>Edit</button></td>" +
-                        "<td><button>Delete</button></td>" +
+                        "<td><button id='delete'>Delete</button></td>" +
                         "</tr>");
                 $(".table").show();
                 $('.form-horizontal')[0].reset();/* $("#name").val('') its also a way to empty input field in form*/
@@ -50,4 +52,14 @@ $(document).ready(function () {
         var gender = $("#updatedgender").val();
         $("tbody").find('tr').eq(updatingRow).find('td').eq(2).html(gender)
     });
+ $('body').on('click', '#delete', function () { /* on click of delete button user entered data for specified row should delete*/
+        var currentRowvalue = $(this).parent().parent().index();
+//        $(this).closest(currentrowvalue).remove();/*its also a way to delete or remove row*/
+        $("tbody").find('tr').eq(currentRowvalue).remove();
+        var rowCount = $('#myTable >tbody >tr').length;
+         if(rowCount==0)
+         {
+        $("table").hide();
+    }
+});
 });
