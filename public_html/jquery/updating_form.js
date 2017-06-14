@@ -33,7 +33,6 @@ $(document).ready(function () {
 //            });
         }
     });
-   
     /*On click on edit button of row, showing details on modal to allow user to edit*/
     $('body').on('click', '#edit', function () {
         var currentRowvalue = $(this).parent().parent().index();/*.index to count row position like 0 1 2 and we are storing that value in currentrowvalue*/
