@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var svgwidht=1000,svgheight=500;
     var margin = {
         top: 30,
         right: 20,
@@ -29,8 +30,8 @@ $(document).ready(function () {
 
     var svg = d3.select("body")
             .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", svgwidht)
+            .attr("height", svgheight)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
