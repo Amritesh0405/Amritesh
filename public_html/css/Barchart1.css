@@ -10,8 +10,6 @@ body {
 .bar {
     stroke: steelblue;
 }
-.x.axis path{
-    display: none;
-}
+
 
 
