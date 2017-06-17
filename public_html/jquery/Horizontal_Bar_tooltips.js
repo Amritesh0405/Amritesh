@@ -56,7 +56,6 @@ $(document).ready(function () {
                 .attr("width", function (d) {
                     return x(d.value);
                 });
-
         bar.append("text")
                 .attr("class", "value")
                 .attr("y", barHeight / 2)
