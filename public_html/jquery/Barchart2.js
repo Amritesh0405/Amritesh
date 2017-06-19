@@ -58,7 +58,7 @@ $(document).ready(function () {
             SUB: 'NETWORKING',
             MARKS: 40
         }];
-    var color = ['orange','blue','red','green','black','pink'];
+    var color = ['orange','bvarlue','red','green','black','pink'];
     var x = d3.scale.ordinal()// ordinal scale function for the x-axis data.
             .rangeRoundBands([0, width], .5);
     var y = d3.scale.linear()//linear scale function for the y-axis data.
