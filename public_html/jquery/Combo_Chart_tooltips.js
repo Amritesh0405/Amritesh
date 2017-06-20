@@ -119,7 +119,21 @@ $(document).ready(function () {
             })
             .attr("cy", function (d) {
                 return y0(d.flowers);
+            })
+            .on("mouseover", function (d) {
+                div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                div.html((d.month) + "<br/>" + d.flowers)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
             });
+            
     svg.selectAll("dot")
             .data(data)
             .enter().append("circle")
@@ -143,21 +157,8 @@ $(document).ready(function () {
                 div.transition()
                         .duration(500)
                         .style("opacity", 0);
-            })
-             .on("mouseover", function (d) {
-                 console.log('ssssss')
-                div.transition()
-                        .duration(200)
-                        .style("opacity", .9);
-                div.html((d.month) + "<br/>" + d.flowers)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
             });
+             
 });
 
 
