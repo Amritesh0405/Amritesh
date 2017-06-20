@@ -23,7 +23,7 @@ $(document).ready(function () {
             .range([0, width - margin * 2 - labelWidth]);
     xAxis = d3.svg.axis()
             .scale(x)
-            .tickSize(-height + 2 * margin + axisMargin)
+            .tickSize(-height + 2 * margin + axisMargin)//To create tick size of y axis length
             .orient("bottom");
     var div = d3.select("body").append("div").attr("class", "toolTip");
     max = d3.max(data, function (d) {
