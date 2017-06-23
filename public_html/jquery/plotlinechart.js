@@ -65,7 +65,7 @@ $(document).ready(function () {
     y.domain([0, d3.max(data, function (d) {
             return d.close;
         })]);
-
+    console.log('datat',data)
     svg.append("path") // Add the valueline path.
             .attr("d", valueline(data));//d is to specify points from data variable....see example of path in w3school ...we will get d
     svg.append("g") // Add the X Axis
