@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var height = 500;
     var width = $("#example").width();
-    
+
 
     var svg = d3.select("#example").append("svg")
             .attr("width", width)
@@ -20,6 +20,7 @@ $(document).ready(function () {
         if (error)
             throw error;
 
+
         var link = svg.append("g")
                 .attr("class", "links")
                 .selectAll("line")
@@ -29,6 +30,19 @@ $(document).ready(function () {
                     return Math.sqrt(d.value);
                 });
 
+        svg.append("svg:defs").selectAll("marker")
+                .data(["end"])      // Different link/path types can be defined here
+                .enter().append("svg:marker")    // This section adds in the arrows
+                .attr("id", String)
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 15)
+                .attr("refY", -1.5)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 12)
+                .attr("orient", "auto")
+                .append("svg:path")
+                .attr("d", "M0,-5L10,0L0,5");
+        
         var node = svg.append("g")
                 .attr("class", "nodes")
                 .selectAll("circle")
@@ -97,5 +111,12 @@ $(document).ready(function () {
             simulation.alphaTarget(0);
         d.fx = null;
         d.fy = null;
+    }
+    var zoomer = d3.zoom()
+            .scaleExtent([1, 10])
+            .on("zoom", zoomFn);
+    function zoomFn() {
+
+        svg.attr("transform", d3.event.transform);
     }
 });
